@@ -1,0 +1,58 @@
+<mxfile host="app.diagrams.net" agent="SERE" version="22.1.0">
+  <diagram id="module-diagram" name="Module Diagram">
+    <mxGraphModel dx="1500" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1050" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="&lt;b&gt;MODULE DIAGRAM — HOW THE 8 RECOVERED MODULES ARE CONNECTED (current system)&lt;/b&gt;&lt;br&gt;Star topology: every module is reached through the Pharmacy dashboard hub; all share one flat database" style="text;html=1;align=center;fontSize=15;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="40" y="10" width="1320" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="m1" value="&lt;b&gt;M1 — Authentication &amp;amp; Session&lt;/b&gt;&lt;br&gt;Login · Change_Password · changestyle" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="560" y="80" width="240" height="60" as="geometry" /></mxCell>
+        <mxCell id="m3" value="&lt;b&gt;M3 — Drug Inventory&lt;/b&gt;&lt;br&gt;Drug · Drug_List · Search_Drug&#10;Move_Drug · Edit_Price" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="230" y="195" width="230" height="65" as="geometry" /></mxCell>
+        <mxCell id="m4" value="&lt;b&gt;M4 — Expiry &amp;amp; Stock Alerts&lt;/b&gt;&lt;br&gt;Expired_Drug · Almost_Finish&#10;Warning · Warning_List · Renew_Validity" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="900" y="195" width="240" height="65" as="geometry" /></mxCell>
+        <mxCell id="m8" value="&lt;b&gt;M8 — Messaging&lt;/b&gt;&lt;br&gt;Inbox · Send · Show_Message" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="110" y="420" width="220" height="60" as="geometry" /></mxCell>
+        <mxCell id="m5" value="&lt;b&gt;M5 — Purchasing&lt;/b&gt;&lt;br&gt;Buy_Drug · All_Deal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="1030" y="420" width="220" height="60" as="geometry" /></mxCell>
+
+        <mxCell id="m2" value="&lt;b&gt;M2 — DASHBOARD / NAVIGATION (HUB)&lt;/b&gt;&lt;br&gt;Pharmacy (1,520 LOC god class) · Main&#10;global static field bus: username1 · today · time · ex · expired_bar" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1"><mxGeometry x="520" y="330" width="320" height="80" as="geometry" /></mxCell>
+
+        <mxCell id="m6" value="&lt;b&gt;M6 — Sales / Billing (POS)&lt;/b&gt;&lt;br&gt;Sales_Bill · Retrieval_Drug (stub)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="310" y="600" width="230" height="60" as="geometry" /></mxCell>
+        <mxCell id="m7" value="&lt;b&gt;M7 — Reporting / Audit&lt;/b&gt;&lt;br&gt;Shift_Sales · Login_Details" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="830" y="600" width="230" height="60" as="geometry" /></mxCell>
+
+        <mxCell id="infra" value="&lt;b&gt;INFRASTRUCTURE&lt;/b&gt;&lt;br&gt;Connect (JDBC helper) · User · Company" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1"><mxGeometry x="560" y="480" width="240" height="55" as="geometry" /></mxCell>
+
+        <mxCell id="db" value="&lt;b&gt;SHARED DATABASE — `pharmacy` (MySQL / MariaDB) — single flat, denormalised store used by ALL modules&lt;/b&gt;&lt;br&gt;company · drugs · purchase · sales · history_sales · users · login · inbox · message_history · expiry (unused)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="160" y="860" width="1080" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="bus" value="&lt;b&gt;GLOBAL static FIELD BUS&lt;/b&gt;&#10;• Pharmacy.username1 / today / time / ex / expired_bar&#10;• Login.id / Login.NAME&#10;• Drug_List writes into Pharmacy.drug.*&#10;&#10;Cross-frame coupling → high Henry-Kafura Cp for the hub. This is the hidden dependency that makes the modules NOT cleanly separable." style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="120" width="250" height="200" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_m1_m2" value="login OK" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#333333;fontSize=9;" edge="1" parent="1" source="m1" target="m2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_m2_m3" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#82b366;" edge="1" parent="1" source="m2" target="m3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_m2_m4" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#82b366;" edge="1" parent="1" source="m2" target="m4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_m2_m8" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#82b366;" edge="1" parent="1" source="m2" target="m8"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_m2_m5" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#82b366;" edge="1" parent="1" source="m2" target="m5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_m2_m6" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#82b366;" edge="1" parent="1" source="m2" target="m6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_m2_m7" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#82b366;" edge="1" parent="1" source="m2" target="m7"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="e_m2_infra" value="new X().setVisible(true)" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#d6b656;fontSize=9;" edge="1" parent="1" source="m2" target="infra"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="e_m1_db" value="users, login" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#b85450;fontSize=9;dashed=1;" edge="1" parent="1" source="m1" target="db"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_m3_db" value="drugs" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#b85450;fontSize=9;" edge="1" parent="1" source="m3" target="db"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_m4_db" value="drugs" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#b85450;fontSize=9;" edge="1" parent="1" source="m4" target="db"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_m5_db" value="purchase, company" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#b85450;fontSize=9;" edge="1" parent="1" source="m5" target="db"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_m6_db" value="drugs, sales, history_sales" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#b85450;fontSize=9;" edge="1" parent="1" source="m6" target="db"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_m7_db" value="history_sales, login" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#b85450;fontSize=9;" edge="1" parent="1" source="m7" target="db"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_m8_db" value="inbox, message_history" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#b85450;fontSize=9;" edge="1" parent="1" source="m8" target="db"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="leg" value="&lt;b&gt;How to read this diagram&lt;/b&gt;&#10;• Green arrows = navigation (direct &lt;code&gt;new Frame().setVisible(true)&lt;/code&gt; from the hub).&#10;• Grey arrow = successful login opens the dashboard.&#10;• Yellow = shared infrastructure (Connect + the static bus).&#10;• Red dashed = data access (each module talks straight to its tables — no shared data layer).&#10;• Footer of each module lists the legend groups M1–M8 recovered by source partitioning.&#10;&#10;&lt;b&gt;Coupling warning:&lt;/b&gt; the hub has a very high fan-in (all modules) and fan-out, and shares global static state → the highest Henry-Kafura Cp in the system." style="shape=note;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="240" height="240" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

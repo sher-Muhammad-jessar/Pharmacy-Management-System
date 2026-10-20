@@ -1,0 +1,107 @@
+<mxfile host="app.diagrams.net" agent="SERE" version="22.1.0">
+  <diagram id="target-arch" name="Target Architecture (Layered)">
+    <mxGraphModel dx="1500" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1050" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="&lt;b&gt;TARGET SYSTEM ARCHITECTURE — LAYERED / N-TIER (re-engineered)&lt;/b&gt;&lt;br&gt;dependencies point downwards only · UI holds no SQL and no business rules" style="text;html=1;align=center;fontSize=15;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="40" y="10" width="1320" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="clients" value="&lt;b&gt;CLIENTS&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="70" width="1320" height="90" as="geometry" /></mxCell>
+        <mxCell id="c_desktop" value="&lt;b&gt;Desktop app&lt;/b&gt;&lt;br&gt;JavaFX (replaces Swing)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1"><mxGeometry x="70" y="100" width="250" height="50" as="geometry" /></mxCell>
+        <mxCell id="c_web" value="&lt;b&gt;Web SPA&lt;/b&gt;&lt;br&gt;browser client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1"><mxGeometry x="350" y="100" width="250" height="50" as="geometry" /></mxCell>
+        <mxCell id="c_mobile" value="&lt;b&gt;Mobile app&lt;/b&gt; &lt;font color=#6600cc&gt;NEW&lt;/font&gt;&lt;br&gt;offline-capable, syncs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1"><mxGeometry x="630" y="100" width="250" height="50" as="geometry" /></mxCell>
+        <mxCell id="c_scan" value="&lt;b&gt;Barcode / QR scanner&lt;/b&gt; &lt;font color=#6600cc&gt;NEW&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1"><mxGeometry x="910" y="100" width="220" height="50" as="geometry" /></mxCell>
+
+        <mxCell id="api" value="&lt;b&gt;API GATEWAY / REST API&lt;/b&gt; &lt;font color=#6600cc&gt;NEW&lt;/font&gt;&amp;nbsp;— authentication (JWT), rate limiting, versioning, routing to services (enables web + mobile + integrations)" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1"><mxGeometry x="40" y="180" width="1320" height="50" as="geometry" /></mxCell>
+
+        <mxCell id="pres" value="&lt;b&gt;PRESENTATION LAYER&lt;/b&gt; — MVC/MVVM views, input validation, formatting (NO SQL, NO business rules)" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1"><mxGeometry x="40" y="250" width="1320" height="45" as="geometry" /></mxCell>
+
+        <mxCell id="svc" value="&lt;b&gt;APPLICATION / SERVICE LAYER&lt;/b&gt; — use-case logic, validation, transactions, authorization checks" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="315" width="1320" height="190" as="geometry" /></mxCell>
+        <mxCell id="s1" value="AuthService" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="1"><mxGeometry x="60" y="345" width="150" height="34" as="geometry" /></mxCell>
+        <mxCell id="s2" value="UserService" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="1"><mxGeometry x="220" y="345" width="150" height="34" as="geometry" /></mxCell>
+        <mxCell id="s3" value="InventoryService" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="1"><mxGeometry x="380" y="345" width="150" height="34" as="geometry" /></mxCell>
+        <mxCell id="s4" value="BatchService" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="1"><mxGeometry x="540" y="345" width="150" height="34" as="geometry" /></mxCell>
+        <mxCell id="s5" value="SalesService (POS)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="1"><mxGeometry x="700" y="345" width="150" height="34" as="geometry" /></mxCell>
+        <mxCell id="s6" value="PurchaseService" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="1"><mxGeometry x="860" y="345" width="150" height="34" as="geometry" /></mxCell>
+        <mxCell id="s7" value="ReturnService" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="1"><mxGeometry x="1020" y="345" width="150" height="34" as="geometry" /></mxCell>
+        <mxCell id="s8" value="PrescriptionService" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="1"><mxGeometry x="1180" y="345" width="160" height="34" as="geometry" /></mxCell>
+        <mxCell id="s9" value="CustomerLoyaltyService" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="1"><mxGeometry x="60" y="390" width="190" height="34" as="geometry" /></mxCell>
+        <mxCell id="s10" value="NotificationService" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="1"><mxGeometry x="260" y="390" width="180" height="34" as="geometry" /></mxCell>
+        <mxCell id="s11" value="AnalyticsService" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="1"><mxGeometry x="450" y="390" width="160" height="34" as="geometry" /></mxCell>
+        <mxCell id="s12" value="ReportService" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="1"><mxGeometry x="620" y="390" width="150" height="34" as="geometry" /></mxCell>
+        <mxCell id="s13" value="MessageService" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="1"><mxGeometry x="780" y="390" width="150" height="34" as="geometry" /></mxCell>
+        <mxCell id="s14" value="AuditService" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="1"><mxGeometry x="940" y="390" width="150" height="34" as="geometry" /></mxCell>
+        <mxCell id="s15" value="BackupExportService" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="1"><mxGeometry x="1100" y="390" width="180" height="34" as="geometry" /></mxCell>
+        <mxCell id="s16" value="SchedulerService (expiry scan, alerts, backups) &lt;font color=#6600cc&gt;NEW&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="1"><mxGeometry x="60" y="435" width="300" height="34" as="geometry" /></mxCell>
+
+        <mxCell id="domain" value="&lt;b&gt;DOMAIN / MODEL LAYER&lt;/b&gt; — entities + business rules (pure, testable, no framework): Drug · StockBatch · Sale/SaleItem · PurchaseOrder/Item · AppUser/Role · Company · Customer · Prescription · Return · Notification · Branch · Message" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="520" width="1320" height="55" as="geometry" /></mxCell>
+
+        <mxCell id="dao" value="&lt;b&gt;DATA ACCESS LAYER (DAO / Repository) — the ONLY layer that talks to the DB&lt;/b&gt;&amp;nbsp;· parameterised SQL / ORM · connection pool · transaction manager · repositories per aggregate" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1"><mxGeometry x="40" y="590" width="1320" height="55" as="geometry" /></mxCell>
+
+        <mxCell id="db" value="&lt;b&gt;DATABASE LAYER&lt;/b&gt; — MySQL/MariaDB &lt;b&gt;pharmacy_ng&lt;/b&gt; (normalised, 3NF, utf8mb4) — see the Target Database Schema diagram" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1"><mxGeometry x="40" y="660" width="1320" height="45" as="geometry" /></mxCell>
+
+        <mxCell id="cross" value="&lt;b&gt;CROSS-CUTTING CONCERNS&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="730" width="900" height="110" as="geometry" /></mxCell>
+        <mxCell id="x1" value="Configuration (externalised)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=9;" vertex="1" parent="1"><mxGeometry x="60" y="760" width="200" height="30" as="geometry" /></mxCell>
+        <mxCell id="x2" value="Logging" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=9;" vertex="1" parent="1"><mxGeometry x="270" y="760" width="140" height="30" as="geometry" /></mxCell>
+        <mxCell id="x3" value="Security / RBAC / JWT" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=9;" vertex="1" parent="1"><mxGeometry x="420" y="760" width="180" height="30" as="geometry" /></mxCell>
+        <mxCell id="x4" value="Validation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=9;" vertex="1" parent="1"><mxGeometry x="610" y="760" width="140" height="30" as="geometry" /></mxCell>
+        <mxCell id="x5" value="Exception handling" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=9;" vertex="1" parent="1"><mxGeometry x="760" y="760" width="160" height="30" as="geometry" /></mxCell>
+        <mxCell id="x6" value="Caching" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=9;" vertex="1" parent="1"><mxGeometry x="60" y="797" width="140" height="30" as="geometry" /></mxCell>
+        <mxCell id="x7" value="Auditing" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=9;" vertex="1" parent="1"><mxGeometry x="210" y="797" width="140" height="30" as="geometry" /></mxCell>
+        <mxCell id="x8" value="Scheduling" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=9;" vertex="1" parent="1"><mxGeometry x="360" y="797" width="140" height="30" as="geometry" /></mxCell>
+        <mxCell id="x9" value="i18n" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=9;" vertex="1" parent="1"><mxGeometry x="510" y="797" width="120" height="30" as="geometry" /></mxCell>
+
+        <mxCell id="ext" value="&lt;b&gt;EXTERNAL INTEGRATIONS&lt;/b&gt;&lt;br&gt;Email / SMS gateway &lt;font color=#6600cc&gt;NEW&lt;/font&gt;&lt;br&gt;Thermal / PDF printer&lt;br&gt;Payment gateway (optional)&lt;br&gt;Barcode / QR reader" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1"><mxGeometry x="970" y="730" width="390" height="110" as="geometry" /></mxCell>
+
+        <mxCell id="e_clients_api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#666666;" edge="1" parent="1" source="clients" target="api"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_api_pres" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#666666;" edge="1" parent="1" source="api" target="pres"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_pres_svc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#666666;" edge="1" parent="1" source="pres" target="svc"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_svc_domain" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#666666;" edge="1" parent="1" source="svc" target="domain"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_domain_dao" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#666666;" edge="1" parent="1" source="domain" target="dao"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_dao_db" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#666666;" edge="1" parent="1" source="dao" target="db"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram id="target-deploy" name="Target Deployment / Integration">
+    <mxGraphModel dx="1500" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="760" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t2" value="&lt;b&gt;TARGET DEPLOYMENT &amp;amp; INTEGRATION VIEW&lt;/b&gt;" style="text;html=1;align=center;fontSize=15;fontColor=#333333;" vertex="1" parent="1"><mxGeometry x="40" y="10" width="1220" height="30" as="geometry" /></mxCell>
+
+        <mxCell id="d_desktop" value="&lt;b&gt;Desktop client&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1"><mxGeometry x="60" y="80" width="180" height="45" as="geometry" /></mxCell>
+        <mxCell id="d_web" value="&lt;b&gt;Web browser&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1"><mxGeometry x="60" y="150" width="180" height="45" as="geometry" /></mxCell>
+        <mxCell id="d_mob" value="&lt;b&gt;Mobile app&lt;/b&gt; (offline+sync) &lt;font color=#6600cc&gt;NEW&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1"><mxGeometry x="60" y="220" width="180" height="45" as="geometry" /></mxCell>
+
+        <mxCell id="d_lb" value="&lt;b&gt;API Gateway / Load balancer&lt;/b&gt;&lt;br&gt;HTTPS · JWT auth · rate limit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1"><mxGeometry x="330" y="140" width="220" height="70" as="geometry" /></mxCell>
+
+        <mxCell id="d_app" value="&lt;b&gt;Application server(s)&lt;/b&gt;&lt;br&gt;REST API + Services + Scheduler&lt;br&gt;(scalable, stateless)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="640" y="90" width="220" height="90" as="geometry" /></mxCell>
+
+        <mxCell id="d_pool" value="Connection pool" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="1"><mxGeometry x="660" y="200" width="180" height="35" as="geometry" /></mxCell>
+
+        <mxCell id="d_db" value="&lt;b&gt;MySQL / MariaDB&lt;/b&gt;&lt;br&gt;pharmacy_ng (normalised)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="650" y="280" width="200" height="90" as="geometry" /></mxCell>
+
+        <mxCell id="d_email" value="Email / SMS gateway &lt;font color=#6600cc&gt;NEW&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1"><mxGeometry x="960" y="90" width="200" height="45" as="geometry" /></mxCell>
+        <mxCell id="d_print" value="Printer / PDF service &lt;font color=#6600cc&gt;NEW&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1"><mxGeometry x="960" y="160" width="200" height="45" as="geometry" /></mxCell>
+        <mxCell id="d_pay" value="Payment gateway (optional)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1"><mxGeometry x="960" y="230" width="200" height="45" as="geometry" /></mxCell>
+
+        <mxCell id="de1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#666666;" edge="1" parent="1" source="d_desktop" target="d_lb"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="de2" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#666666;" edge="1" parent="1" source="d_web" target="d_lb"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="de3" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#666666;" edge="1" parent="1" source="d_mob" target="d_lb"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="de4" value="HTTPS/JSON" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#666666;fontSize=9;" edge="1" parent="1" source="d_lb" target="d_app"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="de5" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#666666;" edge="1" parent="1" source="d_app" target="d_pool"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="de6" value="JDBC" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#666666;fontSize=9;" edge="1" parent="1" source="d_pool" target="d_db"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="de7" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#9673a6;dashed=1;" edge="1" parent="1" source="d_app" target="d_email"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="de8" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#9673a6;dashed=1;" edge="1" parent="1" source="d_app" target="d_print"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="de9" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#9673a6;dashed=1;" edge="1" parent="1" source="d_app" target="d_pay"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="note" value="Multi-branch: every client is scoped to a branch; the API enforces branch + role authorization. Mobile clients keep a local cache and synchronise when online." style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;fontSize=10;" vertex="1" parent="1"><mxGeometry x="60" y="420" width="420" height="120" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

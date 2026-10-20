@@ -1,0 +1,99 @@
+<mxfile host="app.diagrams.net" agent="SERE" version="22.1.0">
+  <diagram id="target-dfd-context" name="DFD - Context (Level 0)">
+    <mxGraphModel dx="1400" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="760" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t" value="&lt;b&gt;TARGET DFD — CONTEXT DIAGRAM (Level 0)&lt;/b&gt;" style="text;html=1;align=center;fontSize=15;fontColor=#333333;" vertex="1" parent="1"><mxGeometry x="40" y="10" width="1020" height="30" as="geometry" /></mxCell>
+
+        <mxCell id="p0" value="&lt;b&gt;0&lt;/b&gt;&lt;br&gt;Pharmacy&lt;br&gt;Management&lt;br&gt;System" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1"><mxGeometry x="410" y="300" width="200" height="120" as="geometry" /></mxCell>
+
+        <mxCell id="ee_admin" value="Admin" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1"><mxGeometry x="60" y="120" width="150" height="50" as="geometry" /></mxCell>
+        <mxCell id="ee_pharm" value="Pharmacist / Employee" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1"><mxGeometry x="60" y="330" width="150" height="50" as="geometry" /></mxCell>
+        <mxCell id="ee_mgr" value="Branch Manager &lt;font color=#6600cc&gt;NEW&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1"><mxGeometry x="60" y="540" width="150" height="50" as="geometry" /></mxCell>
+
+        <mxCell id="ee_cust" value="Customer &lt;font color=#6600cc&gt;NEW&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1"><mxGeometry x="830" y="140" width="160" height="50" as="geometry" /></mxCell>
+        <mxCell id="ee_sup" value="Supplier &lt;font color=#6600cc&gt;NEW&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1"><mxGeometry x="830" y="420" width="160" height="50" as="geometry" /></mxCell>
+
+        <mxCell id="ee_notif" value="Email / SMS Gateway &lt;font color=#6600cc&gt;NEW&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1"><mxGeometry x="410" y="110" width="200" height="50" as="geometry" /></mxCell>
+        <mxCell id="ee_print" value="Printer / Payment &lt;font color=#6600cc&gt;NEW&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1"><mxGeometry x="410" y="580" width="200" height="50" as="geometry" /></mxCell>
+
+        <mxCell id="f1" value="login / user admin" style="html=1;endArrow=block;fontSize=9;strokeColor=#333333;" edge="1" parent="1" source="ee_admin" target="p0"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f2" value="inventory · sales · returns data" style="html=1;endArrow=block;fontSize=9;strokeColor=#333333;" edge="1" parent="1" source="ee_pharm" target="p0"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f3" value="approvals · branch config" style="html=1;endArrow=block;fontSize=9;strokeColor=#333333;" edge="1" parent="1" source="ee_mgr" target="p0"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f4" value="prescription · purchase" style="html=1;endArrow=block;fontSize=9;strokeColor=#333333;" edge="1" parent="1" source="ee_cust" target="p0"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f5" value="drug supply" style="html=1;endArrow=block;fontSize=9;strokeColor=#333333;" edge="1" parent="1" source="ee_sup" target="p0"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f6" value="alert requests" style="html=1;endArrow=block;fontSize=9;strokeColor=#333333;" edge="1" parent="1" source="p0" target="ee_notif"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f7" value="invoices · receipts" style="html=1;endArrow=block;fontSize=9;strokeColor=#333333;" edge="1" parent="1" source="p0" target="ee_cust"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f8" value="purchase orders" style="html=1;endArrow=block;fontSize=9;strokeColor=#333333;" edge="1" parent="1" source="p0" target="ee_sup"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f9" value="print / payment" style="html=1;endArrow=block;fontSize=9;strokeColor=#333333;" edge="1" parent="1" source="p0" target="ee_print"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f10" value="reports · dashboards" style="html=1;endArrow=block;fontSize=9;strokeColor=#333333;" edge="1" parent="1" source="p0" target="ee_mgr"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="n" value="NEW = entity/flow introduced by the modernised target (multi-branch, customer, supplier, alerts, printing/payment)." style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;fontSize=10;" vertex="1" parent="1"><mxGeometry x="700" y="600" width="300" height="80" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram id="target-dfd-l1" name="DFD - Level 1">
+    <mxGraphModel dx="1600" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="980" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t" value="&lt;b&gt;TARGET DFD — LEVEL 1 (major processes, data stores and flows)&lt;/b&gt;" style="text;html=1;align=center;fontSize=15;fontColor=#333333;" vertex="1" parent="1"><mxGeometry x="40" y="10" width="1420" height="30" as="geometry" /></mxCell>
+
+        <mxCell id="e_admin" value="Admin" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1"><mxGeometry x="30" y="120" width="110" height="45" as="geometry" /></mxCell>
+        <mxCell id="e_pharm" value="Pharmacist" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1"><mxGeometry x="30" y="300" width="110" height="45" as="geometry" /></mxCell>
+        <mxCell id="e_mgr" value="Branch Mgr" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1"><mxGeometry x="30" y="480" width="110" height="45" as="geometry" /></mxCell>
+        <mxCell id="e_cust" value="Customer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1"><mxGeometry x="1360" y="180" width="110" height="45" as="geometry" /></mxCell>
+        <mxCell id="e_sup" value="Supplier" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1"><mxGeometry x="1360" y="420" width="110" height="45" as="geometry" /></mxCell>
+        <mxCell id="e_notif" value="Email/SMS" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1"><mxGeometry x="1360" y="580" width="110" height="45" as="geometry" /></mxCell>
+
+        <mxCell id="pr1" value="1.0 Manage Auth &amp;amp; Access" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1"><mxGeometry x="200" y="90" width="170" height="80" as="geometry" /></mxCell>
+        <mxCell id="pr2" value="2.0 Manage Inventory (drugs &amp;amp; batches)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1"><mxGeometry x="200" y="200" width="170" height="80" as="geometry" /></mxCell>
+        <mxCell id="pr3" value="3.0 Manage Purchasing (PO workflow)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1"><mxGeometry x="200" y="310" width="170" height="80" as="geometry" /></mxCell>
+        <mxCell id="pr4" value="4.0 Process Sale / POS" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1"><mxGeometry x="200" y="420" width="170" height="80" as="geometry" /></mxCell>
+        <mxCell id="pr5" value="5.0 Process Returns / Refunds" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1"><mxGeometry x="200" y="530" width="170" height="80" as="geometry" /></mxCell>
+
+        <mxCell id="pr6" value="6.0 Manage Prescriptions" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1"><mxGeometry x="560" y="90" width="170" height="80" as="geometry" /></mxCell>
+        <mxCell id="pr7" value="7.0 Manage Customers &amp;amp; Loyalty" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1"><mxGeometry x="560" y="200" width="170" height="80" as="geometry" /></mxCell>
+        <mxCell id="pr8" value="8.0 Generate Notifications (scheduler)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1"><mxGeometry x="560" y="310" width="170" height="80" as="geometry" /></mxCell>
+        <mxCell id="pr9" value="9.0 Reporting &amp;amp; Analytics" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1"><mxGeometry x="560" y="420" width="170" height="80" as="geometry" /></mxCell>
+        <mxCell id="pr10" value="10.0 Messaging &amp;amp; Audit" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1"><mxGeometry x="560" y="530" width="170" height="80" as="geometry" /></mxCell>
+
+        <mxCell id="d1" value="D1 | app_user, role, branch" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;" vertex="1" parent="1"><mxGeometry x="940" y="100" width="200" height="40" as="geometry" /></mxCell>
+        <mxCell id="d2" value="D2 | drug, drug_type, stock_batch, storage_place" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;" vertex="1" parent="1"><mxGeometry x="940" y="160" width="200" height="40" as="geometry" /></mxCell>
+        <mxCell id="d3" value="D3 | company, purchase_order, purchase_item" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;" vertex="1" parent="1"><mxGeometry x="940" y="220" width="200" height="40" as="geometry" /></mxCell>
+        <mxCell id="d4" value="D4 | sale, sale_item" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;" vertex="1" parent="1"><mxGeometry x="940" y="280" width="200" height="40" as="geometry" /></mxCell>
+        <mxCell id="d5" value="D5 | sale_return, sale_return_item" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;" vertex="1" parent="1"><mxGeometry x="940" y="340" width="200" height="40" as="geometry" /></mxCell>
+        <mxCell id="d6" value="D6 | prescription, prescription_item" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;" vertex="1" parent="1"><mxGeometry x="940" y="400" width="200" height="40" as="geometry" /></mxCell>
+        <mxCell id="d7" value="D7 | customer, loyalty_transaction" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;" vertex="1" parent="1"><mxGeometry x="940" y="460" width="200" height="40" as="geometry" /></mxCell>
+        <mxCell id="d8" value="D8 | notification" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;" vertex="1" parent="1"><mxGeometry x="940" y="520" width="200" height="40" as="geometry" /></mxCell>
+        <mxCell id="d9" value="D9 | audit_log, login_audit, message" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;" vertex="1" parent="1"><mxGeometry x="940" y="580" width="200" height="40" as="geometry" /></mxCell>
+
+        <mxCell id="g1" style="html=1;endArrow=block;fontSize=8;strokeColor=#333333;" edge="1" parent="1" source="e_admin" target="pr1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g2" style="html=1;endArrow=block;fontSize=8;strokeColor=#333333;" edge="1" parent="1" source="e_pharm" target="pr2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g3" style="html=1;endArrow=block;fontSize=8;strokeColor=#333333;" edge="1" parent="1" source="e_pharm" target="pr4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g4" style="html=1;endArrow=block;fontSize=8;strokeColor=#333333;" edge="1" parent="1" source="e_mgr" target="pr3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g5" style="html=1;endArrow=block;fontSize=8;strokeColor=#333333;" edge="1" parent="1" source="e_cust" target="pr6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g6" style="html=1;endArrow=block;fontSize=8;strokeColor=#333333;" edge="1" parent="1" source="e_cust" target="pr7"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g7" style="html=1;endArrow=block;fontSize=8;strokeColor=#333333;" edge="1" parent="1" source="e_sup" target="pr3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g8" value="alerts" style="html=1;endArrow=block;fontSize=8;strokeColor=#333333;" edge="1" parent="1" source="pr8" target="e_notif"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="s1" style="html=1;endArrow=block;fontSize=8;strokeColor=#666666;" edge="1" parent="1" source="pr1" target="d1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="s2" style="html=1;endArrow=block;fontSize=8;strokeColor=#666666;" edge="1" parent="1" source="pr2" target="d2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="s3" style="html=1;endArrow=block;fontSize=8;strokeColor=#666666;" edge="1" parent="1" source="pr3" target="d3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="s4" style="html=1;endArrow=block;fontSize=8;strokeColor=#666666;" edge="1" parent="1" source="pr4" target="d4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="s5" style="html=1;endArrow=block;fontSize=8;strokeColor=#666666;" edge="1" parent="1" source="pr4" target="d2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="s6" style="html=1;endArrow=block;fontSize=8;strokeColor=#666666;" edge="1" parent="1" source="pr5" target="d5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="s7" style="html=1;endArrow=block;fontSize=8;strokeColor=#666666;" edge="1" parent="1" source="pr6" target="d6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="s8" style="html=1;endArrow=block;fontSize=8;strokeColor=#666666;" edge="1" parent="1" source="pr7" target="d7"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="s9" style="html=1;endArrow=block;fontSize=8;strokeColor=#666666;" edge="1" parent="1" source="pr8" target="d8"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="s10" value="scan" style="html=1;endArrow=block;fontSize=8;strokeColor=#666666;" edge="1" parent="1" source="pr8" target="d2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="s11" style="html=1;endArrow=block;fontSize=8;strokeColor=#666666;" edge="1" parent="1" source="pr9" target="d4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="s12" style="html=1;endArrow=block;fontSize=8;strokeColor=#666666;" edge="1" parent="1" source="pr10" target="d9"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="lg" value="&lt;b&gt;Notation&lt;/b&gt;&lt;br&gt;Ellipse = process · rectangle = external entity · Dn = data store.&amp;nbsp;NEW processes/stores (customer, loyalty, prescription, returns, notifications, analytics) are part of the modernised target." style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;fontSize=10;" vertex="1" parent="1"><mxGeometry x="200" y="650" width="640" height="80" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

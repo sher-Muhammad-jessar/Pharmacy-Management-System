@@ -1,0 +1,76 @@
+<mxfile host="Electron" agent="SERE">
+  <diagram id="db-schema" name="Database Schema (Tables)">
+    <mxGraphModel dx="1041" dy="686" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1050" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;align=center;fontSize=15;fontColor=#333333;" value="&lt;b&gt;PHARMACY MANAGEMENT SYSTEM — DATABASE SCHEMA DIAGRAM (CURRENT / LEGACY)&lt;/b&gt;&lt;br&gt;database: &lt;b&gt;pharmacy&lt;/b&gt; · MySQL / MariaDB 10.1 · 10 tables · InnoDB · latin1" vertex="1">
+          <mxGeometry height="40" width="1320" x="40" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="company" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="&lt;b&gt;company&lt;/b&gt;&lt;br&gt;&lt;i&gt;PK&lt;/i&gt; NAME : varchar(50)&lt;br&gt;ADDRESS : varchar(50)&lt;br&gt;PHONE : varchar(20)" vertex="1">
+          <mxGeometry height="100" width="250" x="10" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="purchase" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="&lt;b&gt;purchase&lt;/b&gt;&lt;br&gt;&lt;i&gt;PK&lt;/i&gt; BARCODE : varchar(20)&lt;br&gt;NAME : varchar(50)&lt;br&gt;TYPE : varchar(20)&lt;br&gt;&lt;i&gt;FK&lt;/i&gt; COMPANY_NAME : varchar(20)&lt;br&gt;QUANTITY : int&lt;br&gt;PRICE : double&lt;br&gt;AMOUNT : double" vertex="1">
+          <mxGeometry height="170" width="250" x="350" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="users" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="&lt;b&gt;users&lt;/b&gt;&lt;br&gt;&lt;i&gt;PK&lt;/i&gt; ID : int&lt;br&gt;NAME : varchar(50)&lt;br&gt;DOB : varchar(20)&lt;br&gt;ADDRESS : varchar(100)&lt;br&gt;PHONE : varchar(20)&lt;br&gt;SALARY : double&lt;br&gt;PASSWORD : varchar(20) &lt;font color=#ff0000&gt;&lt;b&gt;(plain&lt;br&gt;text)&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="170" width="250" x="640" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="login" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" value="&lt;b&gt;login&lt;/b&gt; &lt;font color=#ff0000&gt;(no PK)&lt;/font&gt;&lt;br&gt;NAME : varchar(50)&lt;br&gt;TYPE : varchar(20)&lt;br&gt;DATE : varchar(20)&lt;br&gt;TIME : varchar(20)" vertex="1">
+          <mxGeometry height="130" width="250" x="980" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="drugs" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="&lt;b&gt;drugs&lt;/b&gt;&lt;br&gt;&lt;i&gt;PK&lt;/i&gt; BARCODE : varchar(20)&lt;br&gt;NAME : varchar(50)&lt;br&gt;TYPE : varchar(20)&lt;br&gt;DOSE : varchar(10)&lt;br&gt;CODE : varchar(10)&lt;br&gt;COST_PRICE : double&lt;br&gt;SELLING_PRICE : double&lt;br&gt;EXPIRY : varchar(20)&lt;br&gt;&lt;i&gt;(FK?)&lt;/i&gt; COMPANY_NAME : varchar(50)&lt;br&gt;PRODUCTION_DATE : date&lt;br&gt;EXPIRATION_DATE : date&lt;br&gt;PLACE : varchar(20)&lt;br&gt;QUANTITY : int" vertex="1">
+          <mxGeometry height="260" width="250" x="10" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="sales" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" value="&lt;b&gt;sales&lt;/b&gt; &lt;font color=#ff0000&gt;(no PK)&lt;/font&gt;&lt;br&gt;BARCODE : varchar(20)&lt;br&gt;NAME : varchar(50)&lt;br&gt;TYPE : varchar(10)&lt;br&gt;DOSE : varchar(10)&lt;br&gt;QUANTITY : int&lt;br&gt;PRICE : double&lt;br&gt;AMOUNT : double&lt;br&gt;DATE : varchar(15)" vertex="1">
+          <mxGeometry height="185" width="250" x="10" y="557.5" as="geometry" />
+        </mxCell>
+        <mxCell id="inbox" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" value="&lt;b&gt;inbox&lt;/b&gt; &lt;font color=#ff0000&gt;(no PK)&lt;/font&gt;&lt;br&gt;MESSAGE_FROM : varchar(20)&lt;br&gt;MESSAGE_TO : varchar(20)&lt;br&gt;MESSAGE_TEXT : varchar(200)" vertex="1">
+          <mxGeometry height="115" width="250" x="380" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="message_history" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" value="&lt;b&gt;message_history&lt;/b&gt; &lt;font color=#ff0000&gt;(no PK)&lt;/font&gt;&lt;br&gt;MESSAGE_FROM : varchar(20)&lt;br&gt;MESSAGE_TO : varchar(20)&lt;br&gt;MESSAGE_TEXT : varchar(200)" vertex="1">
+          <mxGeometry height="115" width="250" x="980" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="history_sales" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" value="&lt;b&gt;history_sales&lt;/b&gt; &lt;font color=#ff0000&gt;(no PK)&lt;/font&gt;&lt;br&gt;USER_NAME : varchar(20)&lt;br&gt;BARCODE : varchar(20)&lt;br&gt;NAME : varchar(50)&lt;br&gt;TYPE : varchar(10)&lt;br&gt;DOSE : varchar(10)&lt;br&gt;QUANTITY : int&lt;br&gt;PRICE : double&lt;br&gt;AMOUNT : double&lt;br&gt;DATE : varchar(15)&lt;br&gt;TIME : varchar(20)" vertex="1">
+          <mxGeometry height="220" width="250" x="320" y="522.5" as="geometry" />
+        </mxCell>
+        <mxCell id="expiry" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" value="&lt;b&gt;expiry&lt;/b&gt; &lt;font color=#cc0000&gt;&lt;b&gt;(ORPHAN / UNUSED)&lt;/b&gt;&lt;/font&gt;&lt;br&gt;PRODUCT_NAME : varchar(50)&lt;br&gt;PRODUCT_CODE : varchar(20)&lt;br&gt;DATE_OF_EXPIRY : varchar(10)&lt;br&gt;QUANTITY_REMAIN : int" vertex="1">
+          <mxGeometry height="125" width="250" x="980" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" value="&lt;b&gt;LEGEND&lt;/b&gt;&lt;br&gt;&lt;font color=#6c8ebf&gt;■&lt;/font&gt; table with a primary key&lt;br&gt;&lt;font color=#d79b00&gt;■&lt;/font&gt; table with NO primary key&lt;br&gt;&lt;font color=#b85450&gt;■&lt;/font&gt; orphan / unused table&lt;br&gt;&lt;i&gt;PK&lt;/i&gt; primary key · &lt;i&gt;FK&lt;/i&gt; foreign key&lt;br&gt;—— declared FK (with ON CASCADE)&lt;br&gt;- - - implied relationship (NO FK in DB)" vertex="1">
+          <mxGeometry height="150" width="250" x="980" y="575" as="geometry" />
+        </mxCell>
+        <mxCell id="note" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;fontSize=10;" value="&lt;b&gt;Problems visible in the schema:&lt;/b&gt;&#xa;1. Denormalisation — NAME / TYPE / DOSE / PRICE are copied into sales, purchase, history_sales.&#xa;2. No primary key on 5 tables (sales, history_sales, login, inbox, message_history).&#xa;3. drugs.COMPANY_NAME has NO foreign key (only purchase.COMPANY_NAME does).&#xa;4. Dates stored as varchar and parsed in code with split(&quot;-&quot;).&#xa;5. Passwords stored in plain text (users.PASSWORD varchar(20)).&#xa;6. Duplicate tables inbox = message_history.&#xa;7. Dead structure — expiry table is never queried.&#xa;8. latin1 encoding instead of utf8mb4." vertex="1">
+          <mxGeometry height="220" width="550" x="500" y="800" as="geometry" />
+        </mxCell>
+        <mxCell id="e_purchase_company" edge="1" parent="1" source="purchase" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERone;startArrow=ERmany;strokeColor=#b85450;exitX=0;exitY=0.25;entryX=1;entryY=0.5;" target="company">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_pc" parent="1" style="text;html=1;fontSize=9;fontColor=#b85450;" value="FK fkr3 (cascade)" vertex="1">
+          <mxGeometry height="20" width="110" x="250" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="e_drugs_company" edge="1" parent="1" source="drugs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;html=1;endArrow=ERone;startArrow=ERmany;strokeColor=#999999;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" target="company">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_purchase_drugs" edge="1" parent="1" source="purchase" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;html=1;endArrow=ERone;startArrow=ERmany;strokeColor=#999999;exitX=0;exitY=0.75;entryX=1;entryY=0.25;" target="drugs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_sales_drugs" edge="1" parent="1" source="sales" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;html=1;endArrow=ERone;startArrow=ERmany;strokeColor=#999999;exitX=0.5;exitY=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitDx=0;exitDy=0;" target="drugs">
+          <mxGeometry relative="1" x="0.2729" as="geometry" />
+        </mxCell>
+        <mxCell id="e_history_drugs" edge="1" parent="1" source="history_sales" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;html=1;endArrow=ERone;startArrow=ERmany;strokeColor=#999999;exitX=0.5;exitY=0;entryX=1;entryY=0.9;" target="drugs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_login_users" edge="1" parent="1" source="login" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;html=1;endArrow=ERone;startArrow=ERmany;strokeColor=#999999;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" target="users">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inbox_users" edge="1" parent="1" source="inbox" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;html=1;endArrow=ERone;startArrow=ERmany;strokeColor=#999999;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" target="users">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_hist_users" edge="1" parent="1" source="history_sales" style="edgeStyle=orthogonalEdgeStyle;rounded=0;dashed=1;html=1;endArrow=ERone;startArrow=ERmany;strokeColor=#999999;exitX=1;exitY=0.25;entryX=0.629;entryY=1.006;exitDx=0;exitDy=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="users">
+          <mxGeometry relative="1" x="-0.0017" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

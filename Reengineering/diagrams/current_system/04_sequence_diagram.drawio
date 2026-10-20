@@ -1,0 +1,360 @@
+<mxfile host="Electron" agent="SERE" pages="3">
+  <diagram id="seq-login" name="Sequence - Login">
+    <mxGraphModel dx="1448" dy="726" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1250" pageHeight="820" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;align=center;fontSize=15;fontColor=#333333;" value="&lt;b&gt;SEQUENCE DIAGRAM — LOGIN / AUTHENTICATE (current system)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="1150" x="40" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="p_user" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="&lt;b&gt;:User&lt;/b&gt;&lt;br&gt;(Admin / Employee)" vertex="1">
+          <mxGeometry height="75" width="160" y="25" as="geometry" />
+        </mxCell>
+        <mxCell id="p_login" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" value="&lt;b&gt;:Login&lt;/b&gt;&lt;br&gt;(JFrame)" vertex="1">
+          <mxGeometry height="75" width="170" x="245" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p_conn" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" value="&lt;b&gt;:Connect&lt;/b&gt;&lt;br&gt;(static helper)" vertex="1">
+          <mxGeometry height="40" width="140" x="500" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p_db" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" value="&lt;b&gt;MySQL DB&lt;/b&gt;&lt;br&gt;table: users" vertex="1">
+          <mxGeometry height="40" width="140" x="720" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p_pharm" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" value="&lt;b&gt;:Pharmacy&lt;/b&gt;&lt;br&gt;(dashboard)" vertex="1">
+          <mxGeometry height="40" width="140" x="940" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_user" edge="1" parent="1" source="p_user" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="130" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ll_login" edge="1" parent="1" source="p_login" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ll_conn" edge="1" parent="1" source="p_conn" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="570" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ll_db" edge="1" parent="1" source="p_db" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="790" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ll_pharm" edge="1" parent="1" source="p_pharm" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1010" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="act_login" parent="1" style="html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="" vertex="1">
+          <mxGeometry height="470" width="10" x="345" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="act_conn" parent="1" style="html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="" vertex="1">
+          <mxGeometry height="120" width="10" x="565" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" edge="1" parent="1" source="p_user" style="html=1;endArrow=block;strokeColor=#333333;fontSize=10;" target="p_login" value="1: enter ID &amp;amp; Password, click &quot;Login&quot;">
+          <mxGeometry relative="1" x="-0.7837" y="-79" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m2" edge="1" parent="1" source="p_login" style="html=1;endArrow=block;strokeColor=#333333;fontSize=10;rounded=1;" target="p_login" value="2: validate fields not empty&#xa;(else &quot;Missing Information&quot;)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="175" />
+              <mxPoint x="440" y="205" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m3" edge="1" parent="1" source="p_login" style="html=1;endArrow=block;strokeColor=#333333;fontSize=10;" target="p_conn" value="3: connect()">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m4" edge="1" parent="1" source="p_conn" style="html=1;endArrow=block;strokeColor=#333333;fontSize=10;" target="p_db" value="4: getConnection(&quot;jdbc:mysql://localhost/pharmacy&quot;, &quot;root&quot;, &quot;&quot;)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m5" edge="1" parent="1" source="p_db" style="html=1;endArrow=open;dashed=1;strokeColor=#666666;fontSize=10;" target="p_conn" value="5: Connection (return)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6" edge="1" parent="1" source="p_conn" style="html=1;endArrow=open;dashed=1;strokeColor=#666666;fontSize=10;" target="p_login" value="6: Connection con (return)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m7" edge="1" parent="1" source="p_login" style="html=1;endArrow=block;strokeColor=#333333;fontSize=10;" target="p_db" value="7: SELECT ID,NAME,PASSWORD FROM users WHERE ID=&#39;&lt;input&gt;&#39;   (string-concatenated → SQL injection)">
+          <mxGeometry relative="1" x="-0.3427" y="-117" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m8" edge="1" parent="1" source="p_db" style="html=1;endArrow=open;dashed=1;strokeColor=#666666;fontSize=10;" target="p_login" value="8: ResultSet (return)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m9" edge="1" parent="1" source="p_login" style="html=1;endArrow=block;strokeColor=#333333;fontSize=10;rounded=1;" target="p_login" value="9: compare res.PASSWORD.equals(input)  (PLAIN TEXT)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="430" />
+              <mxPoint x="440" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m10" edge="1" parent="1" source="p_login" style="html=1;endArrow=block;strokeColor=#008800;fontSize=10;" target="p_pharm" value="10: [alt: password OK]  NAME = res.NAME ; new Pharmacy() ; this.dispose()">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m11" edge="1" parent="1" source="p_pharm" style="html=1;endArrow=block;strokeColor=#008800;fontSize=10;" target="p_user" value="11: setVisible(true) — show dashboard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m12" edge="1" parent="1" source="p_login" style="html=1;endArrow=block;strokeColor=#cc0000;fontSize=10;" target="p_user" value="12: [else] dialog &quot;Wrong Password&quot; / &quot;Wrong ID&quot; — stay on Login">
+          <mxGeometry relative="1" x="0.8656" y="49" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;fontSize=10;" value="&lt;b&gt;Defects visible in this flow&lt;/b&gt;&#xa;• &lt;b&gt;SQL injection&lt;/b&gt; — the ID is concatenated straight into the query.&#xa;• &lt;b&gt;Plain-text password&lt;/b&gt; stored and compared as-is.&#xa;• The &lt;code&gt;if(id.equals(&quot;1&quot;)) ... else ...&lt;/code&gt; branches are IDENTICAL (dead role split).&#xa;• Admin vs employee is never actually enforced here.&#xa;• One new DB connection per Login construction (no pooling)." vertex="1">
+          <mxGeometry height="120" width="600" x="60" y="560" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="seq-sale" name="Sequence - Create Sale / Bill">
+    <mxGraphModel dx="1400" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1350" pageHeight="820" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t2" value="&lt;b&gt;SEQUENCE DIAGRAM — CREATE SALE / BILL (POS) — current system&lt;/b&gt;" style="text;html=1;align=center;fontSize=15;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="40" y="10" width="1270" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="s_emp" value="&lt;b&gt;:Employee&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="30" y="60" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s_bill" value="&lt;b&gt;:Sales_Bill&lt;/b&gt;&lt;br&gt;(JFrame)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="250" y="60" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s_conn" value="&lt;b&gt;:Connect&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="470" y="60" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s_drugs" value="&lt;b&gt;DB: drugs&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="690" y="60" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s_sales" value="&lt;b&gt;DB: sales&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="910" y="60" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s_hist" value="&lt;b&gt;DB: history_sales&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="60" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sl_emp" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;" edge="1" parent="1" source="s_emp">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="105" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sl_bill" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;" edge="1" parent="1" source="s_bill">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="325" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sl_conn" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;" edge="1" parent="1" source="s_conn">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="545" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sl_drugs" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;" edge="1" parent="1" source="s_drugs">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="765" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sl_sales" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;" edge="1" parent="1" source="s_sales">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="985" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sl_hist" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;" edge="1" parent="1" source="s_hist">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1205" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sact" value="" style="html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="320" y="125" width="10" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="sm1" value="1: enter Barcode + Quantity, click &quot;Get_Bill&quot;" style="html=1;endArrow=block;strokeColor=#333333;fontSize=10;" edge="1" parent="1" source="s_emp" target="s_bill">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sm2" value="2: validate (empty → &quot;Missing Information&quot;)" style="html=1;endArrow=block;strokeColor=#333333;fontSize=10;rounded=1;" edge="1" parent="1" source="s_bill" target="s_bill">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="420" y="170" />
+              <mxPoint x="420" y="195" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sm3" value="3: check_Bill() — duplicate barcode+qty?" style="html=1;endArrow=block;strokeColor=#333333;fontSize=10;rounded=1;" edge="1" parent="1" source="s_bill" target="s_bill">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="420" y="215" />
+              <mxPoint x="420" y="240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sm4" value="4: connect()" style="html=1;endArrow=block;strokeColor=#333333;fontSize=10;" edge="1" parent="1" source="s_bill" target="s_conn">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sm5" value="5: Connection (return)" style="html=1;endArrow=open;dashed=1;strokeColor=#666666;fontSize=10;" edge="1" parent="1" source="s_conn" target="s_bill">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sm6" value="6: SELECT BARCODE,NAME,TYPE,DOSE,SELLING_PRICE,QUANTITY,EXPIRY FROM drugs WHERE BARCODE=&#39;&lt;input&gt;&#39;" style="html=1;endArrow=block;strokeColor=#333333;fontSize=10;" edge="1" parent="1" source="s_bill" target="s_drugs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sm7" value="7: row (return)" style="html=1;endArrow=open;dashed=1;strokeColor=#666666;fontSize=10;" edge="1" parent="1" source="s_drugs" target="s_bill">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sm8" value="8: alt [EXPIRY=&quot;Expired&quot;] → offer Renew_Validity  |  else → continue" style="html=1;endArrow=block;strokeColor=#333333;fontSize=10;rounded=1;" edge="1" parent="1" source="s_bill" target="s_bill">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="420" y="330" />
+              <mxPoint x="420" y="355" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sm9" value="9: INSERT INTO sales (BARCODE,NAME,TYPE,DOSE,QUANTITY,PRICE,AMOUNT,DATE) ..." style="html=1;endArrow=block;strokeColor=#333333;fontSize=10;" edge="1" parent="1" source="s_bill" target="s_sales">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sm10" value="10: UPDATE drugs SET QUANTITY = rest_drug WHERE BARCODE=&#39;&lt;input&gt;&#39;   (decrement stock)" style="html=1;endArrow=block;strokeColor=#333333;fontSize=10;" edge="1" parent="1" source="s_bill" target="s_drugs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sm11" value="11: INSERT INTO history_sales (USER_NAME,...,DATE,TIME) ..." style="html=1;endArrow=block;strokeColor=#333333;fontSize=10;" edge="1" parent="1" source="s_bill" target="s_hist">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sm12" value="12: get_Total() — SELECT AMOUNT FROM sales  (loop; accumulation)" style="html=1;endArrow=block;strokeColor=#333333;fontSize=10;" edge="1" parent="1" source="s_bill" target="s_sales">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sm13" value="13: AMOUNT rows (return)" style="html=1;endArrow=open;dashed=1;strokeColor=#666666;fontSize=10;" edge="1" parent="1" source="s_sales" target="s_bill">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sm14" value="14: show bill lines + total on the form" style="html=1;endArrow=open;dashed=1;strokeColor=#666666;fontSize=10;" edge="1" parent="1" source="s_bill" target="s_emp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note2" value="&lt;b&gt;Defects visible in this flow&lt;/b&gt;&#xa;• &lt;b&gt;NOT transactional&lt;/b&gt; — INSERT sales, UPDATE drugs, INSERT history_sales run in AUTO-COMMIT: a failure can leave stock and history inconsistent.&#xa;• All three SQL statements are &lt;b&gt;string-concatenated&lt;/b&gt; (injection).&#xa;• &lt;code&gt;get_Total()&lt;/code&gt; accumulates inside the loop → the running total is added repeatedly (known bug).&#xa;• Quantity 0 only warns; the sale still proceeds.&#xa;• &quot;New_Bill&quot; / &quot;Cancel&quot; issue a blanket &lt;code&gt;DELETE FROM sales&lt;/code&gt;." style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="30" y="560" width="660" height="150" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="seq-purchase" name="Sequence - Record Purchase">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1250" pageHeight="760" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t3" parent="1" style="text;html=1;align=center;fontSize=15;fontColor=#333333;" value="&lt;b&gt;SEQUENCE DIAGRAM — RECORD PURCHASE — current system&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="1150" x="40" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="b_act" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="&lt;b&gt;:Admin / Employee&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="160" x="30" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b_frame" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" value="&lt;b&gt;:Buy_Drug&lt;/b&gt;&lt;br&gt;(+ All_Deal)" vertex="1">
+          <mxGeometry height="40" width="160" x="270" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b_conn" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" value="&lt;b&gt;:Connect&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="150" x="510" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b_comp" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" value="&lt;b&gt;DB: company&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="150" x="740" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b_pur" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" value="&lt;b&gt;DB: purchase&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="150" x="970" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bl_act" edge="1" parent="1" source="b_act" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bl_frame" edge="1" parent="1" source="b_frame" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bl_conn" edge="1" parent="1" source="b_conn" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="585" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bl_comp" edge="1" parent="1" source="b_comp" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="815" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bl_pur" edge="1" parent="1" source="b_pur" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1045" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bact" parent="1" style="html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="" vertex="1">
+          <mxGeometry height="420" width="10" x="345" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="bm1" edge="1" parent="1" source="b_act" style="html=1;endArrow=block;strokeColor=#333333;fontSize=10;" target="b_frame" value="1: open Buy_Drug, enter Barcode / Name / Type / Company / Qty / Cost">
+          <mxGeometry relative="1" x="-1" y="-71" as="geometry">
+            <mxPoint x="-10" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bm2" edge="1" parent="1" source="b_frame" style="html=1;endArrow=block;strokeColor=#333333;fontSize=10;" target="b_conn" value="2: connect()">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bm3" edge="1" parent="1" source="b_conn" style="html=1;endArrow=open;dashed=1;strokeColor=#666666;fontSize=10;" target="b_frame" value="3: Connection (return)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bm4" edge="1" parent="1" source="b_frame" style="html=1;endArrow=block;strokeColor=#333333;fontSize=10;" target="b_comp" value="4: SELECT NAME FROM company  (populate company combo)">
+          <mxGeometry relative="1" x="-0.0214" y="-100" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="450" y="70" />
+              <mxPoint x="460" y="60" />
+              <mxPoint x="520" y="50" />
+              <mxPoint x="640" y="50" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bm5" edge="1" parent="1" source="b_comp" style="html=1;endArrow=open;dashed=1;strokeColor=#666666;fontSize=10;" target="b_frame" value="5: company list (return)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="70" />
+              <mxPoint x="700" y="110" />
+              <mxPoint x="480" y="110" />
+              <mxPoint x="450" y="90" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bm6" edge="1" parent="1" source="b_frame" style="html=1;endArrow=block;strokeColor=#333333;fontSize=10;rounded=1;" target="b_frame" value="6: validate fields">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="310" />
+              <mxPoint x="450" y="335" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bm7" edge="1" parent="1" source="b_frame" style="html=1;endArrow=block;strokeColor=#333333;fontSize=10;" target="b_pur" value="7: [Insert] INSERT INTO purchase (...)  |  [Update] UPDATE purchase SET ...  |  [Delete] DELETE FROM purchase WHERE BARCODE=&#39;&lt;input&gt;&#39;">
+          <mxGeometry relative="1" x="0.2549" y="-90" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="430" y="50" />
+              <mxPoint x="470" y="40" />
+              <mxPoint x="690" y="40" />
+              <mxPoint x="890" y="50" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bm8" edge="1" parent="1" source="b_pur" style="html=1;endArrow=open;dashed=1;strokeColor=#666666;fontSize=10;" target="b_frame" value="8: affected rows (return)">
+          <mxGeometry relative="1" x="-0.6339" y="80" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="900" y="110" />
+              <mxPoint x="710" y="120" />
+              <mxPoint x="470" y="120" />
+              <mxPoint x="450" y="100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bm9" edge="1" parent="1" source="b_frame" style="html=1;endArrow=open;dashed=1;strokeColor=#666666;fontSize=10;" target="b_act" value="9: confirmation dialog">
+          <mxGeometry relative="1" x="0.5" y="50" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note3" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;fontSize=10;" value="&lt;b&gt;Notes&lt;/b&gt;&#xa;• purchase.COMPANY_NAME is the ONLY real foreign key in the schema (constraint fkr3 → company.NAME, ON UPDATE/DELETE CASCADE).&#xa;• All statements are string-concatenated (injection).&#xa;• Company combo is populated by a full SELECT NAME FROM company." vertex="1">
+          <mxGeometry height="110" width="620" x="30" y="600" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

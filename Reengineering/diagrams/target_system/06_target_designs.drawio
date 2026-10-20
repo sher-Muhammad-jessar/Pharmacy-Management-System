@@ -1,0 +1,387 @@
+<mxfile host="Electron" agent="SERE" pages="4">
+  <diagram id="td-class" name="Design - Domain Class Diagram">
+    <mxGraphModel dx="2854" dy="1431" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1420" pageHeight="1120" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t" parent="1" style="text;html=1;align=center;fontSize=15;fontColor=#333333;" value="&lt;b&gt;TARGET DESIGN — DOMAIN CLASS DIAGRAM (re-engineered + modernised)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="1340" x="40" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="Branch" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;" value="&lt;b&gt;Branch&lt;/b&gt;&lt;hr&gt;- branchId : int&amp;lt;&amp;lt;PK&amp;gt;&amp;gt;&#xa;- name : String&#xa;- address : String&#xa;- isActive : boolean&lt;hr&gt;+ deactivate()" vertex="1">
+          <mxGeometry height="120" width="300" x="40" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Role" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;" value="&lt;b&gt;Role&lt;/b&gt;&lt;hr&gt;- roleId : int&#xa;- roleName : String&lt;hr&gt;" vertex="1">
+          <mxGeometry height="95" width="300" x="40" y="404" as="geometry" />
+        </mxCell>
+        <mxCell id="Company" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;" value="&lt;b&gt;Company&lt;/b&gt; (supplier)&lt;hr&gt;- companyId : int&#xa;- name, address, phone, email, contactPerson&lt;hr&gt;+ placeOrder()" vertex="1">
+          <mxGeometry height="115" width="300" x="360" y="62.5" as="geometry" />
+        </mxCell>
+        <mxCell id="DrugType" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;" value="&lt;b&gt;DrugType&lt;/b&gt;&lt;hr&gt;- typeId : int&#xa;- typeName : String" vertex="1">
+          <mxGeometry height="90" width="100" x="710" y="262.5" as="geometry" />
+        </mxCell>
+        <mxCell id="AppUser" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;" value="&lt;b&gt;AppUser&lt;/b&gt;&lt;hr&gt;- userId : int&#xa;- name, email, phone, address&#xa;- passwordHash : String&#xa;- role : Role&#xa;- branch : Branch&#xa;- isActive, failedAttempts, lockedUntil&lt;hr&gt;+ authenticate(pwd) : boolean&#xa;+ isLocked() : boolean&#xa;+ hasPermission(action) : boolean" vertex="1">
+          <mxGeometry height="175" width="300" x="40" y="215" as="geometry" />
+        </mxCell>
+        <mxCell id="Drug" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;" value="&lt;b&gt;Drug&lt;/b&gt;&lt;hr&gt;- drugId : int&#xa;- barcode : String&#xa;- name, dose, code&#xa;- drugType : DrugType&#xa;- company : Company&#xa;- costPrice, sellingPrice, taxRate&#xa;- reorderLevel : int&#xa;- isPrescription, isActive : boolean&lt;hr&gt;+ totalStock() : int&#xa;+ isLowStock() : boolean" vertex="1">
+          <mxGeometry height="185" width="300" x="380" y="215" as="geometry" />
+        </mxCell>
+        <mxCell id="StoragePlace" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;" value="&lt;b&gt;StoragePlace&lt;/b&gt;&lt;hr&gt;- placeId : int&#xa;- section : String&#xa;- shelf : String" vertex="1">
+          <mxGeometry height="90" width="300" x="40" y="515" as="geometry" />
+        </mxCell>
+        <mxCell id="Prescription" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" value="&lt;b&gt;Prescription&lt;/b&gt; &lt;font color=#6600cc&gt;NEW&lt;/font&gt;&lt;hr&gt;- prescriptionId : int&#xa;- customer : Customer&#xa;- doctorName, doctorLicense&#xa;- issuedDate, expiryDate&#xa;- status : enum&lt;hr&gt;+ isValid() : boolean&#xa;+ dispense(item, qty)" vertex="1">
+          <mxGeometry height="150" width="300" x="1110" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="StockBatch" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;" value="&lt;b&gt;StockBatch&lt;/b&gt;&lt;hr&gt;- batchId : int&#xa;- drug : Drug&#xa;- branch : Branch&#xa;- batchNo&#xa;- productionDate, expirationDate&#xa;- quantity : int&#xa;- costPrice&#xa;- place : StoragePlace&lt;hr&gt;+ isExpired() : boolean&#xa;+ isExpiringSoon(days) : boolean" vertex="1">
+          <mxGeometry height="180" width="300" x="370" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="Customer" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;" value="&lt;b&gt;Customer&lt;/b&gt; &lt;font color=#6600cc&gt;NEW&lt;/font&gt;&lt;hr&gt;- customerId : int&#xa;- name, phone, email, address&#xa;- loyaltyPoints : int&#xa;- branch : Branch&lt;hr&gt;+ addPoints(n)&#xa;+ redeemPoints(n)" vertex="1">
+          <mxGeometry height="150" width="300" x="1100" y="197.5" as="geometry" />
+        </mxCell>
+        <mxCell id="Sale" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" value="&lt;b&gt;Sale&lt;/b&gt; (invoice)&lt;hr&gt;- saleId : int&#xa;- invoiceNo : String&#xa;- branch : Branch&#xa;- cashier : AppUser&#xa;- customer : Customer&#xa;- saleDateTime : datetime&#xa;- subtotal, taxAmount, discount, total&#xa;- paymentMethod, status&lt;hr&gt;+ addItem(item)&#xa;+ computeTotals()" vertex="1">
+          <mxGeometry height="185" width="190" x="853" y="234" as="geometry" />
+        </mxCell>
+        <mxCell id="PurchaseOrder" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=9;" value="&lt;b&gt;PurchaseOrder&lt;/b&gt;&lt;hr&gt;- poId : int&#xa;- company : Company&#xa;- branch : Branch&#xa;- orderDate : date&#xa;- status : enum(DRAFT..RECEIVED)&lt;br&gt;- createdBy, approvedBy : AppUser&#xa;- totalAmount&lt;hr&gt;+ submit()&#xa;+ approve(manager)&#xa;+ receive()" vertex="1">
+          <mxGeometry height="185" width="170" x="890" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="SaleReturn" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" value="&lt;b&gt;SaleReturn&lt;/b&gt; &lt;font color=#6600cc&gt;NEW&lt;/font&gt;&lt;hr&gt;- returnId : int&#xa;- sale : Sale&#xa;- user : AppUser&#xa;- returnDateTime&#xa;- reason, totalRefund&lt;hr&gt;+ addItem(item)&#xa;+ restock()" vertex="1">
+          <mxGeometry height="150" width="150" x="480" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="PurchaseItem" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=9;" value="&lt;b&gt;PurchaseItem&lt;/b&gt;&lt;hr&gt;- poItemId : int&#xa;- drug : Drug&#xa;- quantity : int&#xa;- unitPrice, amount" vertex="1">
+          <mxGeometry height="120" width="110" x="705" y="77.5" as="geometry" />
+        </mxCell>
+        <mxCell id="Notification" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;" value="&lt;b&gt;Notification&lt;/b&gt; &lt;font color=#6600cc&gt;NEW&lt;/font&gt;&lt;hr&gt;- notificationId : int&#xa;- type, severity : enum&#xa;- drug, batch : ref&#xa;- message : String&#xa;- channel, status : enum&#xa;- createdAt, sentAt&lt;hr&gt;+ dispatch()" vertex="1">
+          <mxGeometry height="160" width="300" x="1000" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="Loyalty" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" value="&lt;b&gt;LoyaltyTransaction&lt;/b&gt; &lt;font color=#6600cc&gt;NEW&lt;/font&gt;&lt;hr&gt;- txnId : int&#xa;- customer : Customer&#xa;- sale : Sale&#xa;- pointsDelta : int&#xa;- createdAt" vertex="1">
+          <mxGeometry height="125" width="300" x="1100" y="25" as="geometry" />
+        </mxCell>
+        <mxCell id="PrescItem" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" value="&lt;b&gt;PrescriptionItem&lt;/b&gt; &lt;font color=#6600cc&gt;NEW&lt;/font&gt;&lt;hr&gt;- prescItemId : int&#xa;- drug : Drug&#xa;- dosage : String&#xa;- quantity, dispensedQty : int" vertex="1">
+          <mxGeometry height="120" width="300" x="1100" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="ReturnItem" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" value="&lt;b&gt;SaleReturnItem&lt;/b&gt; &lt;font color=#6600cc&gt;NEW&lt;/font&gt;&lt;hr&gt;- returnItemId : int&#xa;- saleItem : SaleItem&#xa;- quantity : int&#xa;- refundAmount" vertex="1">
+          <mxGeometry height="120" width="300" x="690" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="Message" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;" value="&lt;b&gt;Message&lt;/b&gt;&lt;hr&gt;- messageId : int&#xa;- fromUser, toUser : AppUser&#xa;- messageText : String&#xa;- sentAt, isRead" vertex="1">
+          <mxGeometry height="120" width="300" x="90" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" edge="1" parent="1" source="AppUser" style="html=1;endArrow=open;endFill=0;strokeColor=#666666;fontSize=8;" target="Role">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" edge="1" parent="1" source="AppUser" style="html=1;endArrow=open;endFill=0;strokeColor=#666666;fontSize=8;" target="Branch" value="1..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" edge="1" parent="1" source="Drug" style="html=1;endArrow=open;endFill=0;strokeColor=#666666;fontSize=8;" target="Company" value="1..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" edge="1" parent="1" source="Drug" style="html=1;endArrow=open;endFill=0;strokeColor=#666666;fontSize=8;" target="DrugType">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" edge="1" parent="1" source="StockBatch" style="html=1;endArrow=open;endFill=0;strokeColor=#666666;fontSize=8;" target="Drug" value="1..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a6" edge="1" parent="1" source="StockBatch" style="html=1;endArrow=open;endFill=0;strokeColor=#666666;fontSize=8;" target="StoragePlace">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a7" edge="1" parent="1" source="Sale" style="html=1;endArrow=open;endFill=0;strokeColor=#666666;fontSize=8;" target="SaleItem" value="1..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a8" edge="1" parent="1" source="SaleItem" style="html=1;endArrow=open;endFill=0;strokeColor=#666666;fontSize=8;" target="Drug">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a9" edge="1" parent="1" source="SaleItem" style="html=1;endArrow=open;endFill=0;strokeColor=#666666;fontSize=8;" target="StockBatch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a10" edge="1" parent="1" source="PurchaseOrder" style="html=1;endArrow=open;endFill=0;strokeColor=#666666;fontSize=8;" target="PurchaseItem">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a11" edge="1" parent="1" source="PurchaseItem" style="html=1;endArrow=open;endFill=0;strokeColor=#666666;fontSize=8;" target="Drug">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a12" edge="1" parent="1" source="Sale" style="html=1;endArrow=open;endFill=0;strokeColor=#666666;fontSize=8;" target="Customer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a13" edge="1" parent="1" source="Customer" style="html=1;endArrow=open;endFill=0;strokeColor=#666666;fontSize=8;" target="Loyalty" value="1..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a14" edge="1" parent="1" source="Prescription" style="html=1;endArrow=open;endFill=0;strokeColor=#666666;fontSize=8;" target="PrescItem">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a15" edge="1" parent="1" source="Prescription" style="html=1;endArrow=open;endFill=0;strokeColor=#666666;fontSize=8;" target="Customer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a16" edge="1" parent="1" source="SaleReturn" style="html=1;endArrow=open;endFill=0;strokeColor=#666666;fontSize=8;" target="ReturnItem">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a17" edge="1" parent="1" source="SaleItem" style="html=1;endArrow=open;endFill=0;strokeColor=#666666;fontSize=8;" target="Sale">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a18" edge="1" parent="1" source="ReturnItem" style="html=1;endArrow=open;endFill=0;strokeColor=#666666;fontSize=8;" target="SaleItem">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a19" edge="1" parent="1" source="SaleItem" style="html=1;endArrow=open;endFill=0;strokeColor=#666666;fontSize=8;" target="Drug">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uEr1JcU6WCm2WnDVBRD--1" edge="1" parent="1" source="SaleReturn" style="html=1;endArrow=open;endFill=0;strokeColor=#666666;fontSize=8;" target="SaleItem" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="593" y="640" as="sourcePoint" />
+            <mxPoint x="823" y="365" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uEr1JcU6WCm2WnDVBRD--2" edge="1" parent="1" source="Notification" style="html=1;endArrow=open;endFill=0;strokeColor=#666666;fontSize=8;" target="SaleItem" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1078" y="640" as="sourcePoint" />
+            <mxPoint x="680" y="398" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SaleItem" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" value="&lt;b&gt;SaleItem&lt;/b&gt;&lt;hr&gt;- saleItemId : int&#xa;- drug : Drug&#xa;- batch : StockBatch&#xa;- quantity : int&#xa;- unitPrice, taxRate, amount" vertex="1">
+          <mxGeometry height="135" width="200" x="815" y="470" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="td-seq-pos" name="Design - Sequence POS Sale">
+    <mxGraphModel dx="1500" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="780" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t" value="&lt;b&gt;TARGET DESIGN — SEQUENCE: POS SALE (transactional, FEFO stock, tax, loyalty)&lt;/b&gt;" style="text;html=1;align=center;fontSize=15;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="40" y="10" width="1220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p1" value="&lt;b&gt;:Pharmacist&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="30" y="60" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p2" value="&lt;b&gt;:POS View&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="230" y="60" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p3" value="&lt;b&gt;:SalesService&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="430" y="60" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p4" value="&lt;b&gt;:InventoryService&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="630" y="60" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p5" value="&lt;b&gt;:SaleDAO&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="830" y="60" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p6" value="&lt;b&gt;:DrugDAO&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="60" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p7" value="&lt;b&gt;DB pharmacy_ng&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="120" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="l1" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;" edge="1" parent="1" source="p1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="105" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l2" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;" edge="1" parent="1" source="p2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="305" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l3" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;" edge="1" parent="1" source="p3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="505" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l4" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;" edge="1" parent="1" source="p4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="705" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l5" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;" edge="1" parent="1" source="p5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="905" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l6" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;" edge="1" parent="1" source="p6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1105" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m1" value="1: scan barcode / add item" style="html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="p1" target="p2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m2" value="2: createSale(items, customer, branch, user)" style="html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="p2" target="p3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m3" value="3: checkStock(drug, qty)" style="html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="p3" target="p4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m4" value="4: selectBatchesFEFO(drug)" style="html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="p4" target="p6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m5" value="5: SELECT batches ORDER BY expiration_date" style="html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="p6" target="p7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m6" value="6: available = true" style="html=1;endArrow=open;dashed=1;fontSize=9;strokeColor=#666666;" edge="1" parent="1" source="p4" target="p3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m7" value="7: beginTransaction()" style="html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="p3" target="p5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m8" value="8: insert sale + sale_item(s)" style="html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="p5" target="p7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m9" value="9: decrementBatch(batch, qty)" style="html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="p3" target="p4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m10" value="10: UPDATE stock_batch SET quantity=quantity-qty" style="html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="p4" target="p7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m11" value="11: update loyalty + write audit_log" style="html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="p3" target="p5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m12" value="12: COMMIT" style="html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="p3" target="p7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m13" value="13: invoice (print / PDF)" style="html=1;endArrow=open;dashed=1;fontSize=9;strokeColor=#666666;" edge="1" parent="1" source="p3" target="p1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="alt" value="alt [insufficient stock / expired / payment failure] → rollback, no partial sale" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="230" y="600" width="600" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="td-seq-login" name="Design - Sequence Login with RBAC">
+    <mxGraphModel dx="1500" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1250" pageHeight="760" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t" value="&lt;b&gt;TARGET DESIGN — SEQUENCE: LOGIN WITH HASHED PASSWORD, RBAC &amp;amp; OPTIONAL 2FA&lt;/b&gt;" style="text;html=1;align=center;fontSize=15;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="40" y="10" width="1170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p0" value="&lt;b&gt;:User&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="30" y="60" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p1" value="&lt;b&gt;:LoginView&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="210" y="60" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p2" value="&lt;b&gt;:AuthService&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="390" y="60" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p3" value="&lt;b&gt;:UserDAO&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="570" y="60" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p4" value="&lt;b&gt;:NotificationService&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="750" y="60" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p5" value="&lt;b&gt;:AuditService&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="940" y="60" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="l0" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;" edge="1" parent="1" source="p0">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l1" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;" edge="1" parent="1" source="p1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="280" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l2" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;" edge="1" parent="1" source="p2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="460" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l3" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;" edge="1" parent="1" source="p3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="640" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l4" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;" edge="1" parent="1" source="p4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="825" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l5" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;" edge="1" parent="1" source="p5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1010" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q1" value="1: credentials" style="html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="p0" target="p1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q2" value="2: authenticate(name, pwd)" style="html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="p1" target="p2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q3" value="3: findByName(name)" style="html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="p2" target="p3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q4" value="4: app_user + role + branch" style="html=1;endArrow=open;dashed=1;fontSize=9;strokeColor=#666666;" edge="1" parent="1" source="p3" target="p2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q5" value="5: isLocked? verify hash → ok" style="html=1;endArrow=block;fontSize=9;rounded=1;" edge="1" parent="1" source="p2" target="p2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="550" y="250" />
+              <mxPoint x="550" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q6" value="6: [if 2FA] send one-time code" style="html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="p2" target="p4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q7" value="7: 2FA verified" style="html=1;endArrow=open;dashed=1;fontSize=9;strokeColor=#666666;" edge="1" parent="1" source="p4" target="p2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q8" value="8: create session (role, branch)" style="html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="p2" target="p5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q9" value="9: write login_audit + audit_log" style="html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="p5" target="p3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q10" value="10: session token" style="html=1;endArrow=open;dashed=1;fontSize=9;strokeColor=#666666;" edge="1" parent="1" source="p2" target="p1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q11" value="11: open role-based dashboard" style="html=1;endArrow=open;dashed=1;fontSize=9;strokeColor=#666666;" edge="1" parent="1" source="p1" target="p0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="alt" value="alt [invalid] → generic error, increment failed_attempts; lock after N attempts.&#xa;alt [success] → session with role/branch; all later actions re-check authorization server-side." style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="210" y="400" width="620" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="td-state" name="Design - State Model (Purchase Order)">
+    <mxGraphModel dx="1300" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="520" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t" value="&lt;b&gt;TARGET DESIGN — STATE MODEL: PURCHASE ORDER LIFECYCLE&lt;/b&gt;" style="text;html=1;align=center;fontSize=15;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="40" y="10" width="920" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="st" value="&lt;b&gt;● DRAFT&lt;/b&gt;" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="120" width="140" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="su" value="SUBMITTED" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="290" y="120" width="140" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="sa" value="APPROVED" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="520" y="120" width="140" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="sr" value="&lt;b&gt;RECEIVED (final)&lt;/b&gt;" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#82b366;strokeColor=#4d7a3f;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="750" y="120" width="170" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="sc" value="&lt;b&gt;✕ CANCELLED (final)&lt;/b&gt;" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="400" y="300" width="190" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="submit" style="html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="st" target="su">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="approve (manager)" style="html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="su" target="sa">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="receive goods → create batches" style="html=1;endArrow=block;fontSize=9;" edge="1" parent="1" source="sa" target="sr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="reject / cancel" style="html=1;endArrow=block;fontSize=9;strokeColor=#b85450;" edge="1" parent="1" source="su" target="sc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="cancel" style="html=1;endArrow=block;fontSize=9;strokeColor=#b85450;" edge="1" parent="1" source="st" target="sc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
